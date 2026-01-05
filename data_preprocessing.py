@@ -1,10 +1,6 @@
-# data_preprocessing.py
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-def get_data_generators(train_dir, test_dir, img_size=(336, 336), batch_size=16, val_split=0.1):
-    """
-    Returns training, validation, and test data generators.
-    """
+def get_data_generators(train_dir, test_dir, img_size=(336,336), batch_size=16, val_split=0.1):
     datagen = ImageDataGenerator(
         rescale=1./255,
         rotation_range=40,
@@ -36,7 +32,7 @@ def get_data_generators(train_dir, test_dir, img_size=(336, 336), batch_size=16,
     test_gen = datagen.flow_from_directory(
         test_dir,
         target_size=img_size,
-        batch_size=4,  # small batch for evaluation
+        batch_size=4,
         class_mode='categorical',
         shuffle=False
     )
